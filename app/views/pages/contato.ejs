@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Contato </title>
-    <link rel="stylesheet" href="/app/public/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -15,34 +15,49 @@
                 <h1>Contato</h1>
             </div>
 
-            <form action="/contato" method="POST">
+            <form action="/" method="POST">
 
                 <div class="formulario">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="Seu nome" required >
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome" value="<%= dados ? dados.nome : '' %>" required >
+                    <% if (erros && erros.nome) { %>
+                        <p class="erro"><%= erros.nome.msg %></p>
+                        <% } %>
                 </div>
                 
                 <div class="formulario">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required >
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" value="<%= dados ? dados.email : '' %>" required >
+                    <% if (erros && erros.email) { %>
+                        <p class="erro"><%= erros.email.msg %></p>
+                        <% } %>
                 </div>
 
                 <div class="formulario">
                     <label for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" required >
+                    <input type="tel" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" value="<%= dados ? dados.telefone : '' %>" required >
+                    <% if (erros && erros.telefone) { %>
+                        <p class="erro"><%= erros.telefone.msg %></p>
+                        <% } %>
                 </div>
 
                 <div class="formulario">
                     <label for="assunto">Assunto</label>
-                    <input type="text" id="assunto" name="assunto" placeholder="Assunto da mensagem" required >
+                    <input type="text" id="assunto" name="assunto" placeholder="Assunto da mensagem" value="<%= dados ? dados.assunto : '' %>" required >
+                    <% if (erros && erros.assunto) { %>
+                        <p class="erro"><%= erros.assunto.msg %></p>
+                        <% } %>
                 </div>
 
                 <div class="formulario">
                     <label for="mensagem">Mensagem</label>
-                    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required ></textarea>
+                    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..." value="<%= dados ? dados.mensagem : '' %>" required ></textarea>
+                    <% if (erros && erros.mensagem) { %>
+                        <p class="erro"><%= erros.mensagem.msg %></p>
+                        <% } %>
                 </div>
 
-                <button type="submit">Enviar mensagem</button>
+                <button type="submit">Enviar</Cbutton>
 
             </form>
         </section>

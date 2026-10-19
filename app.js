@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const porta = 3000;
@@ -8,7 +9,7 @@ app.use(express.static("./app/public"));
 //configuar o ejs como mecanismo de renderização
 app.set("view engine","ejs");
 //configurar a pasta das views - html->ejs
-app.set("views","./app/views");
+app.set("views","./app/views/pages");
 
 
 //SEMPRE ANTES DA REQUISIÇÃO DAS ROTAS
